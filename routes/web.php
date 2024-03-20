@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Accounts\RoleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +17,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::group(['prefix' => 'admin'] , function(){
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/accounts/roles', [RoleController::class, 'index'])->name('accounts.role.index');
+    Route::post('/accounts/roles', [RoleController::class, 'store'])->name('accounts.role.store');
+
+});
+
+
+
+
+
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
