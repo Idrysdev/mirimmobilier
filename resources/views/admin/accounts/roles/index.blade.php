@@ -36,11 +36,11 @@
 
                                 <td>{{$role->status == 1 ? "Actif" : "inactif" }}</td>
                                 <td>
-                                    <form action="https://www.performangit ceacademy.ci/admin/category/1" method="POST">
-                                        <input type="hidden" name="_token"
-                                            value="Kwvs1tudy0VKRHtMjz1QKDTP1jbgDko82FsFPoS4"> <input type="hidden"
-                                            name="_method" value="DELETE"> <a
-                                            href="https://www.performanceacademy.ci/admin/category/1/edit"
+                                    <form action="{{ route('accounts.role.delete' , $role )}}" method="POST">
+                                        @csrf
+                                        @method("DELETE")
+                                      <a
+                                            href=""
                                             class="btn btn-primary btn-xs"> <i class="mdi mdi-pencil"></i>edit</a>
                                         <button class="btn btn-danger btn-xs delete"><i
                                                 class="mdi mdi-delete"></i>delete</button>

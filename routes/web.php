@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin'] , function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/accounts/roles', [RoleController::class, 'index'])->name('accounts.role.index');
     Route::post('/accounts/roles', [RoleController::class, 'store'])->name('accounts.role.store');
+    Route::delete('/accounts/roles/{id}/delete', [RoleController::class, 'destroy'])->name('accounts.role.delete');
 
 });
 
